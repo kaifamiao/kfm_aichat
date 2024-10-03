@@ -1,11 +1,17 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  $END$
+  <div class="new-chat">
+    <button @click="createNewChat">新建聊天</button>
+  </div>
 </template>
 
-<style scoped>
+<script setup>
+function createNewChat() {
+  // 新建聊天的逻辑
+}
+</script>
 
+<style scoped>
+.new-chat {
+  padding: 16px;
+}
 </style>
