@@ -1,8 +1,8 @@
 <template>
   <div class="chat-input">
-    <div>模型：{{ modelStore.selectedModel }}</div>
-    <div>角色：{{ modelStore.selectedRole }}</div>
-    <div>选项：{{ modelStore.selectedOption }}</div>
+    <div>[{{ modelStore.selectedModel }}]</div>
+    <div>[{{ modelStore.selectedRole }}]</div>
+    <div>[{{ modelStore.selectedOption }}]</div>
 
     <select v-model="selectedOption">
       <option v-for="option in options" :key="option" :value="option">{{ option }}</option>
@@ -18,7 +18,7 @@ import { useModelStore } from '@/stores/modelStore';
 
 const modelStore = useModelStore();
 
-const options = ref(['选项1', '选项2']);
+const options = ref(['选项1', '选项2', '选项3', '选项4', '选项5']);
 const selectedOption = ref(modelStore.selectedOption); // 初始化为 Store 中的值
 
 const messageText = ref('');

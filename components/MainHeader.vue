@@ -1,5 +1,5 @@
 <template>
-  <div class="main-header">
+  <div class="main-header" >
     <!-- 模型选择 -->
     <select v-model="selectedModel">
       <option v-for="model in models" :key="model" :value="model">{{ model }}</option>
@@ -15,6 +15,7 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useModelStore } from '@/stores/modelStore';
+import {useSidebarStore} from "~/stores/sidebar.js";
 
 const modelStore = useModelStore();
 
@@ -48,6 +49,11 @@ watch(
       selectedRole.value = newValue;
     }
 );
+const isSidebarVisible = ref(false);
+
+const sidebarStore = useSidebarStore()
+
+
 </script>
 
 <style scoped>

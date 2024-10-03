@@ -1,6 +1,9 @@
 import { defineStore } from 'pinia';
 
 export const useModelStore = defineStore('modelStore', {
+    // 确保 $id 与插件中使用的一致
+    id: 'modelStore',
+
     state: () => ({
         selectedModel: '模型1',
         selectedOption: '选项1',

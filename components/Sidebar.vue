@@ -1,6 +1,6 @@
 <template>
-  <aside class="sidebar">
-    <button class="close-button" @click="closeSidebar">×</button>
+  <aside class="sidebar" v-show="sidebarStore.isVisible" >
+    <button class="close-button" @click="closeSidebar" >×</button>
     <NewChat />
     <HistoryChat />
     <Setting />
@@ -8,10 +8,12 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue';
+import {defineProps, defineEmits, ref} from 'vue';
 import NewChat from './NewChat.vue';
 import HistoryChat from './HistoryChat.vue';
 import Setting from './Setting.vue';
+import {useSidebarStore} from "~/stores/sidebar.js";
+const isSidebarVisible= ref(true)
 
 const props = defineProps({
   isVisible: {
@@ -21,10 +23,16 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['close-sidebar']);
-
+const sidebarStore = useSidebarStore()
 function closeSidebar() {
   emit('close-sidebar');
+  console.log("closeSidebar"+sidebarStore.toggleSidebar)
+
+  sidebarStore.toggleSidebar = !sidebarStore.toggleSidebar;
+
 }
+
+
 </script>
 
 <style scoped>
@@ -45,6 +53,7 @@ function closeSidebar() {
   border: none;
   font-size: 24px;
   cursor: pointer;
+
 }
 
 @media (max-width: 768px) {
